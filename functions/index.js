@@ -10,7 +10,7 @@ const API_KEY = 'AIzaSyC_k3f5E7yhya_wjnAXswo9sQly-WEJfa8';
 app.intent('CriarLista - produtos - yes', (conv) => {
     conv.data.requestedPermission = 'DEVICE_PRECISE_LOCATION';
     return conv.ask(new Permission({
-        context: 'Para te localizar',
+        context: 'Para te localizarr',
         permissions: conv.data.requestedPermission,
     }));
 });
@@ -31,22 +31,25 @@ app.intent('CriarLista - location_permission', (conv, params, permissionGranted)
                 //     // let market = response['results'][0]['name'];
                 //     return conv.close(`O mercado mais barato é: ${response["bairro"]}`);
                 // });
+                
+                new Promise(function(resolve, reject) {
+                    var options = {
+                        method: 'get',
+                        uri: 'https://viacep.com.br/ws/01310200/json/',
+                        json: true
+                    };
 
-                var options = {
-                    uri: 'https://viacep.com.br/ws/01310200/json/',
-                    headers: {
-                        'User-Agent': 'Request-Promise'
-                    },
-                    json: true // Automatically parses the JSON string in the response
-                };
-                 
-                rp(options)
+                    rp(options)
                     .then(function (repos) {
-                        conv.close(`O mercado mais barato é: ${repos["bairro"]}`);
+                        console.log(repos);
+                        conv.ask(`O mercado mais barato é: ${repos["bairro"]}, pode ser?`);
+                        return resolve();
                     })
                     .catch(function (err) {
-                        console.log(err);
+                        console.log("Error: " + err);
+                        return reject();
                     });
+                });
                 
             } else {
                 return conv.close('Sorry, I could not figure out where you are.');
