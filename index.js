@@ -17,25 +17,25 @@ app.intent('CriarLista - produtos - yes', (conv) => {
 });
 app.intent('CriarLista - location_permission', (conv, params, permissionGranted) => {
     if (permissionGranted) {
-    const {requestedPermission} = conv.data;
-    if (requestedPermission === 'DEVICE_PRECISE_LOCATION') {
-     
-        const {coordinates} = conv.device.location;
-         
-        if (coordinates) {
-            let lat = coordinates.latitude;
-            let long = coordinates.longitude;
-            const API_URL = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${long}&radius=500&types=supermarket&name=mercado&key=${API_KEY}`;
-            request(API_URL, function(err, response, body) {
-                return conv.close(`You are at ${response}`);
-            });
-        } else {
-        // Note: Currently, precise locaton only returns lat/lng coordinates on phones and lat/lng coordinates
-        // and a geocoded address on voice-activated speakers
-        // Coarse location only works on voice-activated speakers..
-        return conv.close('Sorry, I could not figure out where you are.');
-        }
-         
+        const {requestedPermission} = conv.data;
+        if (requestedPermission === 'DEVICE_PRECISE_LOCATION') {
+        
+            const {coordinates} = conv.device.location;
+            
+            if (coordinates) {
+                let lat = coordinates.latitude;
+                let long = coordinates.longitude;
+                const API_URL = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${long}&radius=500&types=supermarket&name=mercado&key=${API_KEY}`;
+
+                request(API_URL, function(err, response, body) {
+                    let market = response['results'][0]['name'];
+                    return conv.close(`O mercado mais barato é: ${market}`);
+                });
+                
+            } else {
+                return conv.close('Sorry, I could not figure out where you are.');
+            }
+            
         }
     } else {
         return conv.close('Sorry, permission denied.');
@@ -43,3 +43,13 @@ app.intent('CriarLista - location_permission', (conv, params, permissionGranted)
 });
  
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
+
+/* apis
+
+http://dev.virtualearth.net/REST/v1/Locations/av%20paulista%202300?include=queryParse&o=json&key=AtH19x_lk5injBwyhlvguL9IJDhLU7C1JAFGcBJ1FQNd7HpCFxxKDPY98W6s0vSg
+
+http://dev.virtualearth.net/REST/v1/locationrecog/-46.64896,-23.54486?key=AtH19x_lk5injBwyhlvguL9IJDhLU7C1JAFGcBJ1FQNd7HpCFxxKDPY98W6s0vSg&output=json
+
+https://api.mapbox.com/geocoding/v5/mapbox.places/super%20mercado.json?proximity=-46.64896393464835,-23.544864644676096&access_token=pk.eyJ1IjoibWFya2V0aXplYXBwIiwiYSI6ImNqbXY4OWpoMzAweDcza252OXpkNnh4bTYifQ.9-FyCPCayVSOkqjf5y4jPQ
+
+*/
