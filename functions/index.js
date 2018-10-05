@@ -2,15 +2,17 @@ const functions = require('firebase-functions');
 const {dialogflow,Permission} = require('actions-on-google');
 const request = require('request');
 const rp = require('request-promise-native');
+const fetch = require('node-fetch');
  
 const app = dialogflow();
 
 const API_KEY = 'AIzaSyC_k3f5E7yhya_wjnAXswo9sQly-WEJfa8';
+const API_URL = "https://pokeapi.co/api/v2/pokemon/1/";
 
 app.intent('CriarLista - produtos - yes', (conv) => {
     conv.data.requestedPermission = 'DEVICE_PRECISE_LOCATION';
     return conv.ask(new Permission({
-        context: 'Para te localizarr',
+        context: 'Para te localizar',
         permissions: conv.data.requestedPermission,
     }));
 });
@@ -25,31 +27,38 @@ app.intent('CriarLista - location_permission', (conv, params, permissionGranted)
                 let lat = coordinates.latitude;
                 let long = coordinates.longitude;
                 // const API_URL = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${long}&radius=500&types=supermarket&name=mercado&key=${API_KEY}`;
-                const API_URL = "https://viacep.com.br/ws/01310200/json/";
 
                 // request(API_URL, function(err, response, body) {
                 //     // let market = response['results'][0]['name'];
                 //     return conv.close(`O mercado mais barato é: ${response["bairro"]}`);
                 // });
-                
-                new Promise(function(resolve, reject) {
-                    var options = {
-                        method: 'get',
-                        uri: 'https://viacep.com.br/ws/01310200/json/',
-                        json: true
-                    };
 
-                    rp(options)
-                    .then(function (repos) {
-                        console.log(repos);
-                        conv.ask(`O mercado mais barato é: ${repos["bairro"]}, pode ser?`);
-                        return resolve();
-                    })
-                    .catch(function (err) {
-                        console.log("Error: " + err);
-                        return reject();
-                    });
+                fetch(API_URL).then(function(res) {
+                    let data = res.json();
+                }).then(function(data) {
+                    conv.ask(`O mercado mais barato é`);
+                }).catch(function(err) {
+                    console.log(err);
                 });
+                
+                // new Promise(function(resolve, reject) {
+                //     var options = {
+                //         method: 'get',
+                //         uri: 'https://viacep.com.br/ws/01310200/json/',
+                //         json: true
+                //     };
+
+                //     rp(options)
+                //     .then(function (repos) {
+                //         console.log(repos);
+                //         conv.ask(`O mercado mais barato é: ${repos["bairro"]}, pode ser?`);
+                //         return resolve();
+                //     })
+                //     .catch(function (err) {
+                //         console.log("Error: " + err);
+                //         return reject();
+                //     });
+                // });
                 
             } else {
                 return conv.close('Sorry, I could not figure out where you are.');
