@@ -1,8 +1,7 @@
 'use strict';
 
 const functions = require('firebase-functions');
-const { WebhookClient } = require('dialogflow-fulfillment');
-const { Card, Suggestion } = require('dialogflow-fulfillment');
+const { WebhookClient, Card, Suggestion } = require('dialogflow-fulfillment');
 const { Carousel } = require('actions-on-google');
 
 process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
@@ -12,34 +11,6 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   const agent = new WebhookClient({ request, response });
   console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers));
   console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
-
-//   function googleAssistantOther(agent) {
-//     let conv = agent.conv(); // Get Actions on Google library conversation object
-//     conv.ask('Please choose an item:'); // Use Actions on Google library to add responses
-//     conv.ask(new Carousel({
-//       title: 'Google Assistant',
-//       items: {
-//         'WorksWithGoogleAssistantItemKey': {
-//           title: 'Works With the Google Assistant',
-//           description: 'If you see this logo, you know it will work with the Google Assistant.',
-//           image: {
-//             url: imageUrl,
-//             accessibilityText: 'Works With the Google Assistant logo',
-//           },
-//         },
-//         'GoogleHomeItemKey': {
-//           title: 'Google Home',
-//           description: 'Google Home is a powerful speaker and voice Assistant.',
-//           image: {
-//             url: imageUrl2,
-//             accessibilityText: 'Google Home'
-//           },
-//         },
-//       },
-//     }));
-//     // Add Actions on Google library responses to your agent's response
-//     agent.add(conv);
-//   }
 
     function ajuda (agent) {
         const ajudaTema = agent.parameters['Help'];
@@ -68,6 +39,34 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
             }
         }
 
+    function mercadosProximos(agent) {
+        let conv = agent.conv(); // Get Actions on Google library conversation 
+        conv.ask('Selecione o mercado desejado:'); // Use Actions on Google library to add responses
+        conv.ask(new Carousel({
+            title: 'Google Assistant',
+            items: {
+                'WorksWithGoogleAssistantItemKey': {
+                title: 'Carrefour Express - R$ 30,00',
+                description: 'Mercado mais barato - 1.1km',
+                image: {
+                    url: 'https://upload.wikimedia.org/wikipedia/fr/thumb/0/09/Logo_carrefour_express.svg/280px-Logo_carrefour_express.svg.png',
+                    accessibilityText: 'Carrefour Express',
+                },
+                },
+                'GoogleHomeItemKey': {
+                title: 'Pão de Açucar - R$ 38,40',
+                description: 'Mercado mais próximo - 600m',
+                image: {
+                    url: 'https://upload.wikimedia.org/wikipedia/pt/d/dd/Logomarca_do_P%C3%A3o_de_A%C3%A7%C3%BAcar_%28supermercado%29.png',
+                    accessibilityText: 'Pão de Açucar'
+                },
+                },
+            },
+        }));
+         // Add Actions on Google library responses to your agent's response
+        agent.add(conv);
+  }
+
         // agent.add(new Card({
         //     title: `Title: this is a card title`,
         //     imageUrl: imageUrl,
@@ -94,5 +93,6 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 
     let intentMap = new Map();
     intentMap.set("Ajuda", ajuda);
+    intentMap.set("confirmacao-lista", mercadosProximos);
     agent.handleRequest(intentMap);
 });
