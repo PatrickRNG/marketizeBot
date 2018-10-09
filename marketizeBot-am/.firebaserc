@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "marketizebot-41a70",
+    "production": "marketizebot-am",
+    "marketizeBotAm": "marketizebot-am",
+    "marketizeBot-am": "marketizebot-am2"
+  }
+}

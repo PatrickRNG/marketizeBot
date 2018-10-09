@@ -12,10 +12,20 @@ const API_URL = "https://pokeapi.co/api/v2/pokemon/1/";
 app.intent('CriarLista - produtos - yes', (conv) => {
     conv.data.requestedPermission = 'DEVICE_PRECISE_LOCATION';
     return conv.ask(new Permission({
-        context: 'Para te localizar',
+        context: 'Para te localizaar',
         permissions: conv.data.requestedPermission,
     }));
 });
+
+function apiTest() {
+    return fetch(API_URL).then(function(res) {
+        return Promise.resolve(res);
+    }).catch(function(err) {
+        console.log(err);
+        return Promise.reject(err);
+    });
+}
+
 app.intent('CriarLista - location_permission', (conv, params, permissionGranted) => {
     if (permissionGranted) {
         const {requestedPermission} = conv.data;
@@ -26,20 +36,21 @@ app.intent('CriarLista - location_permission', (conv, params, permissionGranted)
             if (coordinates) {
                 let lat = coordinates.latitude;
                 let long = coordinates.longitude;
+
+                return apiTest().then(function(result) {
+                    console.log(result);
+                    conv.close('testando');
+                    return Promise.resolve();
+                }).catch(function(err) {
+                    return Promise.reject(err);
+                });
+
                 // const API_URL = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${long}&radius=500&types=supermarket&name=mercado&key=${API_KEY}`;
 
                 // request(API_URL, function(err, response, body) {
                 //     // let market = response['results'][0]['name'];
                 //     return conv.close(`O mercado mais barato é: ${response["bairro"]}`);
                 // });
-
-                fetch(API_URL).then(function(res) {
-                    let data = res.json();
-                }).then(function(data) {
-                    conv.ask(`O mercado mais barato é`);
-                }).catch(function(err) {
-                    console.log(err);
-                });
                 
                 // new Promise(function(resolve, reject) {
                 //     var options = {
