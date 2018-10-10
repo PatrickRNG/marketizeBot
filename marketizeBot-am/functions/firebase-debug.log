@@ -1,0 +1,518 @@
+[debug] [2018-10-09T23:05:55.133Z] ----------------------------------------------------------------------
+[debug] [2018-10-09T23:05:55.136Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Administrator\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy --only functions
+[debug] [2018-10-09T23:05:55.136Z] CLI Version:   5.0.1
+[debug] [2018-10-09T23:05:55.136Z] Platform:      win32
+[debug] [2018-10-09T23:05:55.136Z] Node Version:  v8.11.2
+[debug] [2018-10-09T23:05:55.136Z] Time:          Tue Oct 09 2018 20:05:55 GMT-0300 (E. South America Standard Time)
+[debug] [2018-10-09T23:05:55.136Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-10-09T23:05:55.148Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-10-09T23:05:55.149Z] > authorizing via signed-in user
+[debug] [2018-10-09T23:05:55.149Z] [iam] checking project marketizebot-am2 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2018-10-09T23:05:55.151Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/marketizebot-am2:testIamPermissions  
+
+[debug] [2018-10-09T23:05:55.657Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'marketizebot-am2'...
+[info] 
+[info] i  deploying functions
+[debug] [2018-10-09T23:06:01.655Z] > [functions] package.json contents: {
+  "name": "dialogflowFirebaseFulfillment",
+  "description": "This is the default fulfillment for a Dialogflow agents using Cloud Functions for Firebase",
+  "version": "0.0.1",
+  "private": true,
+  "license": "Apache Version 2.0",
+  "author": "Google Inc.",
+  "engines": {
+    "node": "8"
+  },
+  "scripts": {
+    "start": "firebase serve --only functions:dialogflowFirebaseFulfillment",
+    "deploy": "firebase deploy --only functions:dialogflowFirebaseFulfillment"
+  },
+  "dependencies": {
+    "actions-on-google": "^2.2.0",
+    "dialogflow": "^0.6.0",
+    "dialogflow-fulfillment": "^0.5.0",
+    "firebase-admin": "^5.13.1",
+    "firebase-functions": "^2.0.2",
+    "utils-extend": "1.0.8"
+  }
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2018-10-09T23:06:01.656Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/marketizebot-am2?view=CONSUMER_VIEW  
+ 
+[debug] [2018-10-09T23:06:01.657Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/marketizebot-am2?view=CONSUMER_VIEW  
+ 
+[debug] [2018-10-09T23:06:03.246Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-09T23:06:03.259Z] <<< HTTP RESPONSE 200
+[info] +  functions: all necessary APIs are enabled
+[debug] [2018-10-09T23:06:03.260Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/marketizebot-am2  
+ 
+[debug] [2018-10-09T23:06:04.137Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-09T23:06:04.137Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/349244701725:getServerAppConfig  
+ 
+[debug] [2018-10-09T23:06:05.573Z] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2018-10-09T23:06:05.585Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/marketizebot-am2/configs  
+ 
+[debug] [2018-10-09T23:06:06.184Z] <<< HTTP RESPONSE 200
+[info] i  functions: packaged functions (44.08 KB) for uploading
+[debug] [2018-10-09T23:06:07.042Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/marketizebot-am2/locations/us-central1/functions:generateUploadUrl  
+ 
+[debug] [2018-10-09T23:06:08.590Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-09T23:06:08.591Z] >>> HTTP REQUEST PUT https://storage.googleapis.com/gcf-upload-us-central1-63ea718c-99a5-4e95-affa-8f4042650041/6e4f06bb-e025-4362-890c-3b732e9c51b6.zip?GoogleAccessId=service-349244701725@gcf-admin-robot.iam.gserviceaccount.com&Expires=1539128168&Signature=QultdadwnamB4RLUOhMvbKbWGODwPgFV0bcFlt2vQGTjgwjOdQj7WPqRkNmi3UCgnoqONPUayPZkDoP56ECbwE16ILHrKaWeuvBotZxjQgUJj%2F%2B5wV%2FK%2FeFG2azSe0iDsY1H3xdP%2B02g0zdLNkH3ixdzBGwKXO2KcmE9J4%2BxR7MOsW3ftdldvoDEJLKsG59ydMRaxKzzFlrcyrRm12L8QZ69DZ9gJBbfz5tZFl6%2BUms2%2FKTyoOJx%2FJiJ0kF6tGSG11wmnLg0GsABCG%2Fosytju8a8y2%2B%2FEnzK0qOq9TXRCa0Av84ufMCgWe9AF9A8iEfn8xSCO6OEiad%2FQz%2FR2rLF0w%3D%3D  
+
+[warn] !  functions: Upload Error: Server Error. self signed certificate in certificate chain
+[debug] [2018-10-09T23:06:08.976Z] Error: self signed certificate in certificate chain
+    at TLSSocket.<anonymous> (_tls_wrap.js:1105:38)
+    at emitNone (events.js:106:13)
+    at TLSSocket.emit (events.js:208:7)
+    at TLSSocket._finishInit (_tls_wrap.js:639:8)
+    at TLSWrap.ssl.onhandshakedone (_tls_wrap.js:469:38)
+[error] 
+[error] Error: Server Error. self signed certificate in certificate chain
+[debug] [2018-10-09T23:06:45.030Z] ----------------------------------------------------------------------
+[debug] [2018-10-09T23:06:45.032Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Administrator\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy --only functions
+[debug] [2018-10-09T23:06:45.033Z] CLI Version:   5.0.1
+[debug] [2018-10-09T23:06:45.033Z] Platform:      win32
+[debug] [2018-10-09T23:06:45.033Z] Node Version:  v8.11.2
+[debug] [2018-10-09T23:06:45.033Z] Time:          Tue Oct 09 2018 20:06:45 GMT-0300 (E. South America Standard Time)
+[debug] [2018-10-09T23:06:45.033Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-10-09T23:06:45.045Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-10-09T23:06:45.045Z] > authorizing via signed-in user
+[debug] [2018-10-09T23:06:45.046Z] [iam] checking project marketizebot-am2 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2018-10-09T23:06:45.048Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/marketizebot-am2:testIamPermissions  
+
+[debug] [2018-10-09T23:06:46.082Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'marketizebot-am2'...
+[info] 
+[info] i  deploying functions
+[debug] [2018-10-09T23:06:49.171Z] > [functions] package.json contents: {
+  "name": "dialogflowFirebaseFulfillment",
+  "description": "This is the default fulfillment for a Dialogflow agents using Cloud Functions for Firebase",
+  "version": "0.0.1",
+  "private": true,
+  "license": "Apache Version 2.0",
+  "author": "Google Inc.",
+  "engines": {
+    "node": "8"
+  },
+  "scripts": {
+    "start": "firebase serve --only functions:dialogflowFirebaseFulfillment",
+    "deploy": "firebase deploy --only functions:dialogflowFirebaseFulfillment"
+  },
+  "dependencies": {
+    "actions-on-google": "^2.2.0",
+    "dialogflow": "^0.6.0",
+    "dialogflow-fulfillment": "^0.5.0",
+    "firebase-admin": "^5.13.1",
+    "firebase-functions": "^2.0.2",
+    "utils-extend": "1.0.8"
+  }
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2018-10-09T23:06:49.172Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/marketizebot-am2?view=CONSUMER_VIEW  
+ 
+[debug] [2018-10-09T23:06:49.172Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/marketizebot-am2?view=CONSUMER_VIEW  
+ 
+[debug] [2018-10-09T23:06:50.606Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-09T23:06:50.690Z] <<< HTTP RESPONSE 200
+[info] +  functions: all necessary APIs are enabled
+[debug] [2018-10-09T23:06:50.691Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/marketizebot-am2  
+ 
+[debug] [2018-10-09T23:06:51.604Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-09T23:06:51.605Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/349244701725:getServerAppConfig  
+ 
+[debug] [2018-10-09T23:06:52.813Z] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2018-10-09T23:06:52.819Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/marketizebot-am2/configs  
+ 
+[debug] [2018-10-09T23:06:53.284Z] <<< HTTP RESPONSE 200
+[info] i  functions: packaged functions (44.08 KB) for uploading
+[debug] [2018-10-09T23:06:53.998Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/marketizebot-am2/locations/us-central1/functions:generateUploadUrl  
+ 
+[debug] [2018-10-09T23:06:55.279Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-09T23:06:55.279Z] >>> HTTP REQUEST PUT https://storage.googleapis.com/gcf-upload-us-central1-63ea718c-99a5-4e95-affa-8f4042650041/459f8135-0958-457c-91f0-43270b190a0a.zip?GoogleAccessId=service-349244701725@gcf-admin-robot.iam.gserviceaccount.com&Expires=1539128215&Signature=q6caaIWJNy2c4vPUj2AhiUed72o%2FcYbEpF%2FgahWYGguTGl2lvulCrjkcR1qyKUqOLc%2Blg72mszLtXAeYt%2F8tQwrx3AC6zMzOSny4yPEroH4MFEcF2ygkiCPpYxcxa7F0eWX8oyBJfTBur%2FU18THURs%2B4eKmA6mTbbRXtTYjwxGBUhrA9L7Bv8oDrPqW6ktkkjO4YDpuLUVgRw9odPs1J%2FRTvETXXEwGljFT3e8lApeD%2B7n8vseXivhHqQ5fwR9L8b3mzLfZT6OoK9m606HsodWaDnMT%2By8VcP3OSB9G3hClOCAgwu4Lola98ISseh2ckHgyCjJv7DFbOHRpKR3Pjdg%3D%3D  
+
+[warn] !  functions: Upload Error: Server Error. self signed certificate in certificate chain
+[debug] [2018-10-09T23:06:55.559Z] Error: self signed certificate in certificate chain
+    at TLSSocket.<anonymous> (_tls_wrap.js:1105:38)
+    at emitNone (events.js:106:13)
+    at TLSSocket.emit (events.js:208:7)
+    at TLSSocket._finishInit (_tls_wrap.js:639:8)
+    at TLSWrap.ssl.onhandshakedone (_tls_wrap.js:469:38)
+[error] 
+[error] Error: Server Error. self signed certificate in certificate chain
+[debug] [2018-10-09T23:07:07.105Z] ----------------------------------------------------------------------
+[debug] [2018-10-09T23:07:07.108Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Administrator\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy --only functions
+[debug] [2018-10-09T23:07:07.108Z] CLI Version:   5.0.1
+[debug] [2018-10-09T23:07:07.108Z] Platform:      win32
+[debug] [2018-10-09T23:07:07.108Z] Node Version:  v8.11.2
+[debug] [2018-10-09T23:07:07.108Z] Time:          Tue Oct 09 2018 20:07:07 GMT-0300 (E. South America Standard Time)
+[debug] [2018-10-09T23:07:07.108Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-10-09T23:07:07.120Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-10-09T23:07:07.120Z] > authorizing via signed-in user
+[debug] [2018-10-09T23:07:07.120Z] [iam] checking project marketizebot-am2 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2018-10-09T23:07:07.122Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/marketizebot-am2:testIamPermissions  
+
+[debug] [2018-10-09T23:07:08.312Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'marketizebot-am2'...
+[info] 
+[info] i  deploying functions
+[debug] [2018-10-09T23:07:11.222Z] > [functions] package.json contents: {
+  "name": "dialogflowFirebaseFulfillment",
+  "description": "This is the default fulfillment for a Dialogflow agents using Cloud Functions for Firebase",
+  "version": "0.0.1",
+  "private": true,
+  "license": "Apache Version 2.0",
+  "author": "Google Inc.",
+  "engines": {
+    "node": "8"
+  },
+  "scripts": {
+    "start": "firebase serve --only functions:dialogflowFirebaseFulfillment",
+    "deploy": "firebase deploy --only functions:dialogflowFirebaseFulfillment"
+  },
+  "dependencies": {
+    "actions-on-google": "^2.2.0",
+    "dialogflow": "^0.6.0",
+    "dialogflow-fulfillment": "^0.5.0",
+    "firebase-admin": "^5.13.1",
+    "firebase-functions": "^2.0.2",
+    "utils-extend": "1.0.8"
+  }
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2018-10-09T23:07:11.223Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/marketizebot-am2?view=CONSUMER_VIEW  
+ 
+[debug] [2018-10-09T23:07:11.223Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/marketizebot-am2?view=CONSUMER_VIEW  
+ 
+[debug] [2018-10-09T23:07:12.853Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-09T23:07:12.876Z] <<< HTTP RESPONSE 200
+[info] +  functions: all necessary APIs are enabled
+[debug] [2018-10-09T23:07:12.877Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/marketizebot-am2  
+ 
+[debug] [2018-10-09T23:07:13.773Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-09T23:07:13.773Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/349244701725:getServerAppConfig  
+ 
+[debug] [2018-10-09T23:07:15.106Z] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2018-10-09T23:07:15.112Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/marketizebot-am2/configs  
+ 
+[debug] [2018-10-09T23:07:15.626Z] <<< HTTP RESPONSE 200
+[info] i  functions: packaged functions (44.08 KB) for uploading
+[debug] [2018-10-09T23:07:16.339Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/marketizebot-am2/locations/us-central1/functions:generateUploadUrl  
+ 
+[debug] [2018-10-09T23:07:17.824Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-09T23:07:17.824Z] >>> HTTP REQUEST PUT https://storage.googleapis.com/gcf-upload-us-central1-63ea718c-99a5-4e95-affa-8f4042650041/2a54a5f8-1afa-4ff9-bc0d-7821765782ef.zip?GoogleAccessId=service-349244701725@gcf-admin-robot.iam.gserviceaccount.com&Expires=1539128237&Signature=w%2BFEvZYejXsHy0iyNrCQWB3kCV%2BSTgfLEyIjYIZTrto89qRLbhxh9uiK3MRidghTCrYuEC%2FM54x6vb7wyldcWNLIv1X9ofgpKmtVSVy1CUT1Z4DWEio6cKXMrd9kPZ0VSZeVZe2jFMb2pSzybjdp%2Bne07ST0RI2Q0zWROx6GLvPEBu3rGGXfWm9S0TRT54deHFCTpBcp3EUN8FdCR8nsO13AAhOrBO8F%2B0eKoBPRsFL61nxn59sw8LRjfG%2BtAXzEUg5Pqgthkkt4mJx9WnhG9yocpTBR0fVPbbSvu2Rr5QHIRNhSJegOdJQfnj1pyb3mTvsNNF08LOK4Lei07NgLOA%3D%3D  
+
+[warn] !  functions: Upload Error: Server Error. self signed certificate in certificate chain
+[debug] [2018-10-09T23:07:18.121Z] Error: self signed certificate in certificate chain
+    at TLSSocket.<anonymous> (_tls_wrap.js:1105:38)
+    at emitNone (events.js:106:13)
+    at TLSSocket.emit (events.js:208:7)
+    at TLSSocket._finishInit (_tls_wrap.js:639:8)
+    at TLSWrap.ssl.onhandshakedone (_tls_wrap.js:469:38)
+[error] 
+[error] Error: Server Error. self signed certificate in certificate chain
+[debug] [2018-10-09T23:07:59.213Z] ----------------------------------------------------------------------
+[debug] [2018-10-09T23:07:59.215Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Administrator\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy --only functions
+[debug] [2018-10-09T23:07:59.216Z] CLI Version:   5.0.1
+[debug] [2018-10-09T23:07:59.216Z] Platform:      win32
+[debug] [2018-10-09T23:07:59.216Z] Node Version:  v8.11.2
+[debug] [2018-10-09T23:07:59.216Z] Time:          Tue Oct 09 2018 20:07:59 GMT-0300 (E. South America Standard Time)
+[debug] [2018-10-09T23:07:59.216Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-10-09T23:07:59.227Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-10-09T23:07:59.228Z] > authorizing via signed-in user
+[debug] [2018-10-09T23:07:59.228Z] [iam] checking project marketizebot-am2 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2018-10-09T23:07:59.230Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/marketizebot-am2:testIamPermissions  
+
+[debug] [2018-10-09T23:08:00.237Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'marketizebot-am2'...
+[info] 
+[info] i  deploying functions
+[debug] [2018-10-09T23:08:16.184Z] > [functions] package.json contents: {
+  "name": "dialogflowFirebaseFulfillment",
+  "description": "This is the default fulfillment for a Dialogflow agents using Cloud Functions for Firebase",
+  "version": "0.0.1",
+  "private": true,
+  "license": "Apache Version 2.0",
+  "author": "Google Inc.",
+  "engines": {
+    "node": "8"
+  },
+  "scripts": {
+    "start": "firebase serve --only functions:dialogflowFirebaseFulfillment",
+    "deploy": "firebase deploy --only functions:dialogflowFirebaseFulfillment"
+  },
+  "dependencies": {
+    "actions-on-google": "^2.2.0",
+    "dialogflow": "^0.6.0",
+    "dialogflow-fulfillment": "^0.5.0",
+    "firebase-admin": "^5.13.1",
+    "firebase-functions": "^2.0.2",
+    "utils-extend": "1.0.8"
+  }
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2018-10-09T23:08:16.186Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/marketizebot-am2?view=CONSUMER_VIEW  
+ 
+[debug] [2018-10-09T23:08:16.186Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/marketizebot-am2?view=CONSUMER_VIEW  
+ 
+[debug] [2018-10-09T23:08:17.051Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-09T23:08:17.824Z] <<< HTTP RESPONSE 200
+[info] +  functions: all necessary APIs are enabled
+[debug] [2018-10-09T23:08:17.825Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/marketizebot-am2  
+ 
+[debug] [2018-10-09T23:08:18.868Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-09T23:08:18.868Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/349244701725:getServerAppConfig  
+ 
+[debug] [2018-10-09T23:08:19.391Z] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2018-10-09T23:08:19.397Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/marketizebot-am2/configs  
+ 
+[debug] [2018-10-09T23:08:19.877Z] <<< HTTP RESPONSE 200
+[info] i  functions: packaged functions (44.08 KB) for uploading
+[debug] [2018-10-09T23:08:20.607Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/marketizebot-am2/locations/us-central1/functions:generateUploadUrl  
+ 
+[debug] [2018-10-09T23:08:22.061Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-09T23:08:22.061Z] >>> HTTP REQUEST PUT https://storage.googleapis.com/gcf-upload-us-central1-63ea718c-99a5-4e95-affa-8f4042650041/ee258385-f7e4-4292-804f-f77f9d7bc11d.zip?GoogleAccessId=service-349244701725@gcf-admin-robot.iam.gserviceaccount.com&Expires=1539128301&Signature=XDQwB6u6%2F0v%2Baq73EULKJxxvzFabG27IfnkmSs%2FzLlaOPc2SbsHk0c19Qk2uvcK0s%2Br6Y2gFawuLRwqv4Ke46MSvWWenSwKHGeOaNmoatZ5Di%2BAN1aWHEnofJvJlB3ghC0tzR1B6EQ0035FbLa9xPcOEJKwKSjCkFQGV6JevZSqrv1oQiCwsSNtFwEBSZN2%2BgKQQLfj3ftwsKNATgKug%2FchjSUyEfcFZ%2BSbHp3%2BO4YmLyl3Adym8RA6nbFeReLNnc360Z43wHT5JsTAxyeaqbPW0KiSIJj6aBAOVs%2FsPE0D%2FQI9EFZXPjqXSvcPfq1%2FANa4rhPEn1XU6tn303G1A8Q%3D%3D  
+
+[warn] !  functions: Upload Error: Server Error. self signed certificate in certificate chain
+[debug] [2018-10-09T23:08:22.342Z] Error: self signed certificate in certificate chain
+    at TLSSocket.<anonymous> (_tls_wrap.js:1105:38)
+    at emitNone (events.js:106:13)
+    at TLSSocket.emit (events.js:208:7)
+    at TLSSocket._finishInit (_tls_wrap.js:639:8)
+    at TLSWrap.ssl.onhandshakedone (_tls_wrap.js:469:38)
+[error] 
+[error] Error: Server Error. self signed certificate in certificate chain
+[debug] [2018-10-09T23:08:33.994Z] ----------------------------------------------------------------------
+[debug] [2018-10-09T23:08:33.997Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Administrator\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy --only functions
+[debug] [2018-10-09T23:08:33.997Z] CLI Version:   5.0.1
+[debug] [2018-10-09T23:08:33.997Z] Platform:      win32
+[debug] [2018-10-09T23:08:33.997Z] Node Version:  v8.11.2
+[debug] [2018-10-09T23:08:33.997Z] Time:          Tue Oct 09 2018 20:08:33 GMT-0300 (E. South America Standard Time)
+[debug] [2018-10-09T23:08:33.997Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-10-09T23:08:34.010Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-10-09T23:08:34.010Z] > authorizing via signed-in user
+[debug] [2018-10-09T23:08:34.010Z] [iam] checking project marketizebot-am2 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2018-10-09T23:08:34.012Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/marketizebot-am2:testIamPermissions  
+
+[debug] [2018-10-09T23:08:35.007Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'marketizebot-am2'...
+[info] 
+[info] i  deploying functions
+[debug] [2018-10-09T23:08:37.989Z] > [functions] package.json contents: {
+  "name": "dialogflowFirebaseFulfillment",
+  "description": "This is the default fulfillment for a Dialogflow agents using Cloud Functions for Firebase",
+  "version": "0.0.1",
+  "private": true,
+  "license": "Apache Version 2.0",
+  "author": "Google Inc.",
+  "engines": {
+    "node": "8"
+  },
+  "scripts": {
+    "start": "firebase serve --only functions:dialogflowFirebaseFulfillment",
+    "deploy": "firebase deploy --only functions:dialogflowFirebaseFulfillment"
+  },
+  "dependencies": {
+    "actions-on-google": "^2.2.0",
+    "dialogflow": "^0.6.0",
+    "dialogflow-fulfillment": "^0.5.0",
+    "firebase-admin": "^5.13.1",
+    "firebase-functions": "^2.0.2",
+    "utils-extend": "1.0.8"
+  }
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2018-10-09T23:08:37.990Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/marketizebot-am2?view=CONSUMER_VIEW  
+ 
+[debug] [2018-10-09T23:08:37.990Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/marketizebot-am2?view=CONSUMER_VIEW  
+ 
+[debug] [2018-10-09T23:08:39.379Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-09T23:08:39.440Z] <<< HTTP RESPONSE 200
+[info] +  functions: all necessary APIs are enabled
+[debug] [2018-10-09T23:08:39.441Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/marketizebot-am2  
+ 
+[debug] [2018-10-09T23:08:40.359Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-09T23:08:40.359Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/349244701725:getServerAppConfig  
+ 
+[debug] [2018-10-09T23:08:41.527Z] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2018-10-09T23:08:41.533Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/marketizebot-am2/configs  
+ 
+[debug] [2018-10-09T23:08:41.982Z] <<< HTTP RESPONSE 200
+[info] i  functions: packaged functions (44.08 KB) for uploading
+[debug] [2018-10-09T23:08:42.720Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/marketizebot-am2/locations/us-central1/functions:generateUploadUrl  
+ 
+[debug] [2018-10-09T23:08:44.015Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-09T23:08:44.015Z] >>> HTTP REQUEST PUT https://storage.googleapis.com/gcf-upload-us-central1-63ea718c-99a5-4e95-affa-8f4042650041/75f08b80-ed57-4aa8-bbb4-e52228c4a35f.zip?GoogleAccessId=service-349244701725@gcf-admin-robot.iam.gserviceaccount.com&Expires=1539128323&Signature=inVZ82vNnuJZ4RJSaA6IqoWArl2JpDjoUIVhEB5oA70%2FR0blFadyxcqRi0QowfmmMxtTP%2BmkVz8SrvFSDnlp6Z05%2FIbefM84ZdWi1RqjEoIxPpe4chFRRjKp0d56UONhiPEHFDyA59FPEJ5w2XmhQwLCkdtwZM7MkMs7beI%2Frtd2V6DdO6geI%2FOyQNaM8YsWzxb5D931tnIuwP2SMODcEn4y6UvUjzJBMBoOmgElESZ2mT5b%2Ff6UL3O9iG%2Bl7gsAv3zlIwPs2xXaQP3En6Y05NPUg2DRZX7hbQkrKnSVAmLEqm1TPPW8CNrBx8amQ1RBcm45kLDGonzzJUt9KezibQ%3D%3D  
+
+[warn] !  functions: Upload Error: Server Error. self signed certificate in certificate chain
+[debug] [2018-10-09T23:08:44.296Z] Error: self signed certificate in certificate chain
+    at TLSSocket.<anonymous> (_tls_wrap.js:1105:38)
+    at emitNone (events.js:106:13)
+    at TLSSocket.emit (events.js:208:7)
+    at TLSSocket._finishInit (_tls_wrap.js:639:8)
+    at TLSWrap.ssl.onhandshakedone (_tls_wrap.js:469:38)
+[error] 
+[error] Error: Server Error. self signed certificate in certificate chain
+[debug] [2018-10-09T23:11:37.324Z] ----------------------------------------------------------------------
+[debug] [2018-10-09T23:11:37.326Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Administrator\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy --only functions
+[debug] [2018-10-09T23:11:37.327Z] CLI Version:   5.0.1
+[debug] [2018-10-09T23:11:37.327Z] Platform:      win32
+[debug] [2018-10-09T23:11:37.327Z] Node Version:  v8.11.2
+[debug] [2018-10-09T23:11:37.327Z] Time:          Tue Oct 09 2018 20:11:37 GMT-0300 (E. South America Standard Time)
+[debug] [2018-10-09T23:11:37.327Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-10-09T23:11:37.338Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-10-09T23:11:37.339Z] > authorizing via signed-in user
+[debug] [2018-10-09T23:11:37.339Z] [iam] checking project marketizebot-am2 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2018-10-09T23:11:37.341Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/marketizebot-am2:testIamPermissions  
+
+[debug] [2018-10-09T23:11:38.517Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'marketizebot-am2'...
+[info] 
+[info] i  deploying functions
+[debug] [2018-10-09T23:11:41.940Z] > [functions] package.json contents: {
+  "name": "dialogflowFirebaseFulfillment",
+  "description": "This is the default fulfillment for a Dialogflow agents using Cloud Functions for Firebase",
+  "version": "0.0.1",
+  "private": true,
+  "license": "Apache Version 2.0",
+  "author": "Google Inc.",
+  "engines": {
+    "node": "8"
+  },
+  "scripts": {
+    "start": "firebase serve --only functions:dialogflowFirebaseFulfillment",
+    "deploy": "firebase deploy --only functions:dialogflowFirebaseFulfillment"
+  },
+  "dependencies": {
+    "actions-on-google": "^2.2.0",
+    "dialogflow": "^0.6.0",
+    "dialogflow-fulfillment": "^0.5.0",
+    "firebase-admin": "^5.13.1",
+    "firebase-functions": "^2.0.2",
+    "utils-extend": "1.0.8"
+  }
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2018-10-09T23:11:41.942Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/marketizebot-am2?view=CONSUMER_VIEW  
+ 
+[debug] [2018-10-09T23:11:41.942Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/marketizebot-am2?view=CONSUMER_VIEW  
+ 
+[debug] [2018-10-09T23:11:43.472Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-09T23:11:43.491Z] <<< HTTP RESPONSE 200
+[info] +  functions: all necessary APIs are enabled
+[debug] [2018-10-09T23:11:43.492Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/marketizebot-am2  
+ 
+[debug] [2018-10-09T23:11:44.397Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-09T23:11:44.397Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/349244701725:getServerAppConfig  
+ 
+[debug] [2018-10-09T23:11:44.864Z] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2018-10-09T23:11:44.870Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/marketizebot-am2/configs  
+ 
+[debug] [2018-10-09T23:11:46.118Z] <<< HTTP RESPONSE 200
+[info] i  functions: packaged functions (44.07 KB) for uploading
+[debug] [2018-10-09T23:11:46.919Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/marketizebot-am2/locations/us-central1/functions:generateUploadUrl  
+ 
+[debug] [2018-10-09T23:11:48.371Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-09T23:11:48.371Z] >>> HTTP REQUEST PUT https://storage.googleapis.com/gcf-upload-us-central1-63ea718c-99a5-4e95-affa-8f4042650041/29d61184-8eb7-42bc-af37-2bd52200a80d.zip?GoogleAccessId=service-349244701725@gcf-admin-robot.iam.gserviceaccount.com&Expires=1539128508&Signature=Lmf9keNovsYKi1p3%2FJfPIA9QDeWflHhtPajNaA9wCKXScu9h0bS%2F9zTD%2FxciVOS07RiCFeF8%2BbutJvrw4%2FVlmFnV1RYwh5BS24Ie3NWqt0geiPHzb0lHKRjxK1KTZZYOJ8M%2BXSY6GkWl8MyEaI3V%2FblzHA2KQsuEv2NShAKhEY9SZr1cxA6AhwdFC5iGlE71WeqSSgJWLzjOSDqss%2BVJu3cCXI4I7q6SPbtUIygwEvHS50Kliu%2F1b5rtR8Yz2MrfAJUDq1kTsMp0WJM%2B%2FnDHo75H%2F0slPHOuZAGDtur2L8ZQ8pcjb0gfidZu2XIrPJy%2FVz1VLPyA6tQYvATCGkjcOA%3D%3D  
+
+[warn] !  functions: Upload Error: Server Error. self signed certificate in certificate chain
+[debug] [2018-10-09T23:11:48.662Z] Error: self signed certificate in certificate chain
+    at TLSSocket.<anonymous> (_tls_wrap.js:1105:38)
+    at emitNone (events.js:106:13)
+    at TLSSocket.emit (events.js:208:7)
+    at TLSSocket._finishInit (_tls_wrap.js:639:8)
+    at TLSWrap.ssl.onhandshakedone (_tls_wrap.js:469:38)
+[error] 
+[error] Error: Server Error. self signed certificate in certificate chain
+[debug] [2018-10-09T23:12:32.545Z] ----------------------------------------------------------------------
+[debug] [2018-10-09T23:12:32.547Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Administrator\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy --only functions
+[debug] [2018-10-09T23:12:32.547Z] CLI Version:   5.0.1
+[debug] [2018-10-09T23:12:32.548Z] Platform:      win32
+[debug] [2018-10-09T23:12:32.548Z] Node Version:  v8.11.2
+[debug] [2018-10-09T23:12:32.548Z] Time:          Tue Oct 09 2018 20:12:32 GMT-0300 (E. South America Standard Time)
+[debug] [2018-10-09T23:12:32.548Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-10-09T23:12:32.559Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-10-09T23:12:32.560Z] > authorizing via signed-in user
+[debug] [2018-10-09T23:12:32.560Z] [iam] checking project marketizebot-am2 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2018-10-09T23:12:32.562Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/marketizebot-am2:testIamPermissions  
+
+[debug] [2018-10-09T23:12:33.696Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'marketizebot-am2'...
+[info] 
+[info] i  deploying functions
+[debug] [2018-10-09T23:12:36.790Z] > [functions] package.json contents: {
+  "name": "dialogflowFirebaseFulfillment",
+  "description": "This is the default fulfillment for a Dialogflow agents using Cloud Functions for Firebase",
+  "version": "0.0.1",
+  "private": true,
+  "license": "Apache Version 2.0",
+  "author": "Google Inc.",
+  "engines": {
+    "node": "8"
+  },
+  "scripts": {
+    "start": "firebase serve --only functions:dialogflowFirebaseFulfillment",
+    "deploy": "firebase deploy --only functions:dialogflowFirebaseFulfillment"
+  },
+  "dependencies": {
+    "actions-on-google": "^2.2.0",
+    "dialogflow": "^0.6.0",
+    "dialogflow-fulfillment": "^0.5.0",
+    "firebase-admin": "^6.0.0",
+    "firebase-functions": "^2.0.2",
+    "utils-extend": "1.0.8"
+  }
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2018-10-09T23:12:36.791Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/marketizebot-am2?view=CONSUMER_VIEW  
+ 
+[debug] [2018-10-09T23:12:36.792Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/marketizebot-am2?view=CONSUMER_VIEW  
+ 
+[debug] [2018-10-09T23:12:38.397Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-09T23:12:38.408Z] <<< HTTP RESPONSE 200
+[info] +  functions: all necessary APIs are enabled
+[debug] [2018-10-09T23:12:38.410Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/marketizebot-am2  
+ 
+[debug] [2018-10-09T23:12:39.306Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-09T23:12:39.307Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/349244701725:getServerAppConfig  
+ 
+[debug] [2018-10-09T23:12:40.637Z] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2018-10-09T23:12:40.644Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/marketizebot-am2/configs  
+ 
+[debug] [2018-10-09T23:12:41.175Z] <<< HTTP RESPONSE 200
+[info] i  functions: packaged functions (43.8 KB) for uploading
+[debug] [2018-10-09T23:12:41.939Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/marketizebot-am2/locations/us-central1/functions:generateUploadUrl  
+ 
+[debug] [2018-10-09T23:12:43.472Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-09T23:12:43.473Z] >>> HTTP REQUEST PUT https://storage.googleapis.com/gcf-upload-us-central1-63ea718c-99a5-4e95-affa-8f4042650041/f1423636-5adc-45c5-9d7d-12bbfce64769.zip?GoogleAccessId=service-349244701725@gcf-admin-robot.iam.gserviceaccount.com&Expires=1539128563&Signature=DWt%2FLmqWulzGSHkCUP3zG2A0VuPNir1MNFn%2FR9Rn8foFVTG1qc%2BfkJ%2F6%2BpymfnvQWog2OwLJvVgAdKS0nLDcPRS7ARM3dSU0VniCjGeLOYK4nTv3qKt9jGGhu6DwTe3K%2FpaSgSju%2Fop1gO2ywIPYTSEXBxa6nxBk7eB%2BAQp9Sl%2FhefKk1GQEtaj1Afr12XNVUL0WXQqOt5GFkz28PRhiXDF4bP5BPP3Nn3ivfFWOTEpnnPzP1fqCDq%2F%2BB2miycP6CloZxNa2JXmFoXu0lCSXLByDNFfi0EmBSo81AwAXXFAbn3%2Bucudqe75lZhRHApwA0%2FwCwMyOmgHpGyu6KW45xw%3D%3D  
+
+[warn] !  functions: Upload Error: Server Error. self signed certificate in certificate chain
+[debug] [2018-10-09T23:12:43.771Z] Error: self signed certificate in certificate chain
+    at TLSSocket.<anonymous> (_tls_wrap.js:1105:38)
+    at emitNone (events.js:106:13)
+    at TLSSocket.emit (events.js:208:7)
+    at TLSSocket._finishInit (_tls_wrap.js:639:8)
+    at TLSWrap.ssl.onhandshakedone (_tls_wrap.js:469:38)
+[error] 
+[error] Error: Server Error. self signed certificate in certificate chain
