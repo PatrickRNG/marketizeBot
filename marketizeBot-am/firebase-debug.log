@@ -1,0 +1,69 @@
+[debug] [2018-10-10T22:33:25.055Z] ----------------------------------------------------------------------
+[debug] [2018-10-10T22:33:25.059Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\SandersDell\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy --only functions
+[debug] [2018-10-10T22:33:25.060Z] CLI Version:   5.0.0
+[debug] [2018-10-10T22:33:25.060Z] Platform:      win32
+[debug] [2018-10-10T22:33:25.060Z] Node Version:  v6.11.3
+[debug] [2018-10-10T22:33:25.061Z] Time:          Wed Oct 10 2018 19:33:25 GMT-0300 (Hora oficial do Brasil)
+[debug] [2018-10-10T22:33:25.062Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-10-10T22:33:25.097Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-10-10T22:33:25.099Z] > authorizing via signed-in user
+[debug] [2018-10-10T22:33:25.100Z] [iam] checking project marketizebot-am2 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2018-10-10T22:33:25.108Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/marketizebot-am2:testIamPermissions  
+
+[debug] [2018-10-10T22:33:26.158Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'marketizebot-am2'...
+[info] 
+[info] i  deploying functions
+[debug] [2018-10-10T22:33:34.558Z] > [functions] package.json contents: {
+  "name": "dialogflowFirebaseFulfillment",
+  "description": "This is the default fulfillment for a Dialogflow agents using Cloud Functions for Firebase",
+  "version": "0.0.1",
+  "private": true,
+  "license": "Apache Version 2.0",
+  "author": "Google Inc.",
+  "engines": {
+    "node": "8"
+  },
+  "scripts": {
+    "start": "firebase serve --only functions:dialogflowFirebaseFulfillment",
+    "deploy": "firebase deploy --only functions:dialogflowFirebaseFulfillment"
+  },
+  "dependencies": {
+    "actions-on-google": "^2.2.0",
+    "dialogflow": "^0.6.0",
+    "dialogflow-fulfillment": "^0.5.0",
+    "firebase-admin": "^6.0.0",
+    "firebase-functions": "^2.0.2",
+    "utils-extend": "1.0.8"
+  }
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2018-10-10T22:33:34.560Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/marketizebot-am2?view=CONSUMER_VIEW  
+ 
+[debug] [2018-10-10T22:33:34.561Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/marketizebot-am2?view=CONSUMER_VIEW  
+ 
+[debug] [2018-10-10T22:33:36.062Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-10T22:33:36.128Z] <<< HTTP RESPONSE 200
+[info] +  functions: all necessary APIs are enabled
+[debug] [2018-10-10T22:33:36.130Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/marketizebot-am2  
+ 
+[debug] [2018-10-10T22:33:37.043Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-10T22:33:37.044Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/349244701725:getServerAppConfig  
+ 
+[debug] [2018-10-10T22:33:37.373Z] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2018-10-10T22:33:37.385Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/marketizebot-am2/configs  
+ 
+[debug] [2018-10-10T22:33:37.753Z] <<< HTTP RESPONSE 200
+[info] i  functions: packaged functions (44.38 KB) for uploading
+[debug] [2018-10-10T22:33:39.335Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/marketizebot-am2/locations/us-central1/functions:generateUploadUrl  
+ 
+[debug] [2018-10-10T22:33:40.662Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-10T22:33:40.664Z] >>> HTTP REQUEST PUT https://storage.googleapis.com/gcf-upload-us-central1-63ea718c-99a5-4e95-affa-8f4042650041/aca1862a-bed9-4c3c-b94b-494b5639bf5b.zip?GoogleAccessId=service-349244701725@gcf-admin-robot.iam.gserviceaccount.com&Expires=1539212620&Signature=X5%2FAWx1yZUs7bOfzlQHJSXYWOHhiMuEzkWimv0KMXW0qqEV0tgkmyG5b%2Bg%2FxTbn1XggnmQo9SX7dGjNuJUMgF3aAO7uB2WjJ1VrZduLJjHUP%2FylC5hnNl0sR1UFidNWEgZBgpSKDr%2FgNoQlNzxhNrS%2BCIrBYap2mzOUYe62bD5kaXwYEpgV1aQgRk4gx4ne5S0Z%2F8uvNzGp9N9x%2FpjRuRwbRNmYpi8AlnJxPqzQbEfw7n6SkjvV%2FqKU5GvtTsnrVqWpq9Kz4CCMeq0SMpkh620o8RXyMPZMLaWgp5MGZs5L54UDyVLSmyF9pnh5ypADJywxNYqg3zBv9oX4EQWW%2B8A%3D%3D  
+
+[debug] [2018-10-10T22:33:42.333Z] <<< HTTP RESPONSE 200
+[info] +  functions: functions folder uploaded successfully
+[debug] [2018-10-10T22:33:42.337Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/projects/marketizebot-am2/locations/-/functions  
+ 

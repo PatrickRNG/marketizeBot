@@ -13,7 +13,7 @@ const { dialogflow,
     List,
     MediaObject,
     Suggestions,
-    SimpleResponse,} = require('actions-on-google');
+    SimpleResponse} = require('actions-on-google');
 
 process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
 
@@ -24,29 +24,34 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
 
     function ajuda (agent) {
-        const ajudaTema = agent.parameters['Help'];
+        let ajudaTema = agent.parameters.Help;
         let conv = agent.conv();
         switch(ajudaTema) {
             case "Criar": {
-                conv.close('Para criar uma lista de compras, apenas digite "Criar lista [nome da lista]" e eu te direi os próximos passos!');
+                conv.ask('Para criar uma lista de compras, apenas digite "Criar lista [nome da lista]" e eu te direi os próximos passos!');
+                agent.add(conv);
                 break;
             }
             case "Procurar": {
-                conv.close('Para procurar os mercados mais próximos vc já tem que ter uma lista criada, caso tenha apenas digite "procurar [nome da lista]" ');
+                conv.ask('Para procurar os mercados mais próximos vc já tem que ter uma lista criada, caso tenha apenas digite "procurar [nome da lista]" ');
+                agent.add(conv);                         
                 break;
             }
             case "Editar": {
-                conv.close('Para editar os produtos de uma lista existente, apenas digite "editar [nome da lista]" ');
+                conv.ask('Para editar os produtos de uma lista existente, apenas digite "editar [nome da lista]" ');
+                agent.add(conv);                         
                 break;
             }
 
             case "Excluir": {
-                conv.close('Para exluir uma lista é simples! Apenas digite "Excluir [nome da lista] "');
+                conv.ask('Para exluir uma lista é simples! Apenas digite "Excluir [nome da lista] "');
+                agent.add(conv);                
                 break;
             }
 
             default: {
-                conv.close('Vc pode pedir ajuda sobre criar listas, procurar mercados, editar ou excluir listas comigo! apenas digite "Ajuda [tema da ajuda]" ');
+                conv.ask('Vc pode pedir ajuda sobre criar listas, procurar mercados, editar ou excluir listas comigo! apenas digite "Ajuda [tema da ajuda]" ');
+                agent.add(conv);         
                 break;
             }
         }
@@ -79,6 +84,20 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     //      // Add Actions on Google library responses to your agent's response
     //     agent.add(conv);
     // }
+
+    function showProducts(agent) {
+        let produtosContext = agent.getContext("adicionarprodutos-followup").parameters['produto_name.original'];
+        let nomeLista = agent.getContext("criarlista-followup").parameters['nome_lista'];
+        let numeroEndereco = agent.getContext("criarlista-followup").parameters['endereco_numero.original'];
+        let produtos = String(produtosContext).replace(",,", ", ");
+        console.log(produtos);
+        console.log(nomeLista);
+        console.log(numeroEndereco);
+
+        agent.add(`Beleza! agora confirme pra mim se está tudo certo:
+        Lista: "${nomeLista}" contendo  ${produtos}, para entregar em [endereco] número ${numeroEndereco}, certo?`);
+
+    }
 
     function mercadosProximos(agent) {
         let conv = agent.conv();
@@ -144,5 +163,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     let intentMap = new Map();
     intentMap.set("Ajuda", ajuda);
     intentMap.set("confirmacao-lista", mercadosProximos);
+    intentMap.set("localizacao - yes - numero", showProducts);
+    intentMap.set("confirmacao-no-lista", mercadosProximos);
     agent.handleRequest(intentMap);
 });
