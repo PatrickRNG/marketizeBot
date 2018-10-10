@@ -25,27 +25,28 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 
     function ajuda (agent) {
         const ajudaTema = agent.parameters['Help'];
+        let conv = agent.conv();
         switch(ajudaTema) {
             case "Criar": {
-                agent.add('Para criar uma lista de compras, apenas digite "Criar lista [nome da lista]" e eu te direi os próximos passos!');
+                conv.close('Para criar uma lista de compras, apenas digite "Criar lista [nome da lista]" e eu te direi os próximos passos!');
                 break;
             }
             case "Procurar": {
-                agent.add('Para procurar os mercados mais próximos vc já tem que ter uma lista criada, caso tenha apenas digite "procurar [nome da lista]" ');
+                conv.close('Para procurar os mercados mais próximos vc já tem que ter uma lista criada, caso tenha apenas digite "procurar [nome da lista]" ');
                 break;
             }
             case "Editar": {
-                agent.add('Para editar os produtos de uma lista existente, apenas digite "editar [nome da lista]" ');
+                conv.close('Para editar os produtos de uma lista existente, apenas digite "editar [nome da lista]" ');
                 break;
             }
 
             case "Excluir": {
-                agent.add('Para exluir uma lista é simples! Apenas digite "Excluir [nome da lista] "');
+                conv.close('Para exluir uma lista é simples! Apenas digite "Excluir [nome da lista] "');
                 break;
             }
 
             default: {
-                agent.add('Vc pode pedir ajuda sobre criar listas, procurar mercados, editar ou excluir listas comigo! apenas digite "Ajuda [tema da ajuda]" ');
+                conv.close('Vc pode pedir ajuda sobre criar listas, procurar mercados, editar ou excluir listas comigo! apenas digite "Ajuda [tema da ajuda]" ');
                 break;
             }
         }
